@@ -118,20 +118,29 @@ void cargardatosclientes() {
 
     archivo.close();
 }
+// Función para mostrar la información completa de un carro
+void mostrarInfoCarro(const Carro& carro) {
+    string nombreVendedor, nombreComprador;
 
-// Función para vender un carro
-void venderCarro(int idCarro, const string& nombreCliente) {
-    for (int i = 0; i < numCarros; ++i) {
-        if (carros[i].id == idCarro) {
-            if (!carros[i].vendido) {
-                carros[i].vendido = true;
-                carros[i].cliente = nombreCliente;
-                cout << "Carro vendido a " << nombreCliente << " por $" << carros[i].precio_venta << endl;
-            } else {
-                cout << "El carro ya ha sido vendido." << endl;
-            }
-            return;
+    // Buscar el nombre del cliente que vendió el carro
+    for (int i = 0; i < numClientes; ++i) {
+        if (clientes[i].id == carro.vendido_a) {
+            nombreVendedor = clientes[i].nombre + " " + clientes[i].apellido;
+            break;
         }
     }
-    cout << "No se encontró el carro con la ID especificada." << endl;
+
+    // Buscar el nombre del cliente que compró el carro
+    for (int i = 0; i < numClientes; ++i) {
+        if (clientes[i].id == carro.comprado_a) {
+            nombreComprador = clientes[i].nombre + " " + clientes[i].apellido;
+            break;
+        }
+    }
+
+    // Mostrar la información completa del carro
+    cout << "ID: " << carro.id << ", Marca: " << carro.marca << ", Modelo: " << carro.modelo
+         << ", Año: " << carro.ano << ", Vendido por: " << nombreVendedor
+         << ", Comprado por: " << nombreComprador << ", Precio de venta: " << carro.precio_venta
+         << ", Precio de compra: " << carro.precio_compra << endl;
 }
