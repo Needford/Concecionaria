@@ -163,17 +163,20 @@ void guardarClientes() {
 
 // Función para agregar un nuevo cliente
 void agregarCliente() {
-    Cliente cliente;
-    cout << "Ingrese el ID del cliente: ";
-    cin >> cliente.id;
+    if (numClientes >= MAX_CLIENTES) {
+        cout << "No es posible agregar más clientes. Se ha alcanzado el límite máximo." << endl;
+        return;
+    }
+     Cliente nuevoCliente;
+    nuevoCliente.id = 100 + numClientes; // Empezar desde 100 y aumentar en cada nuevo cliente
     cout << "Ingrese el nombre del cliente: ";
-    cin >> cliente.nombre;
+    cin >> nuevoCliente.nombre;
     cout << "Ingrese el apellido del cliente: ";
-    cin >> cliente.apellido;
+    cin >> nuevoCliente.apellido;
     cout << "Ingrese el correo del cliente: ";
-    cin >> cliente.correo;
+    cin >> nuevoCliente.correo;
     cout << "Ingrese la edad del cliente: ";
-    cin >> cliente.edad;
+    cin >> nuevoCliente.edad;
     guardarClientes();
 }
 
@@ -208,4 +211,28 @@ void eliminarCliente(int idCliente) {
     } else {
         cout << "No se encontró ningún cliente con el ID especificado." << endl;
     }
+}
+//funcion para guardar carros
+void agregarcarro(){
+    if(numCarros>=MAX_CARROS){
+        cout<<"No es posible agregar mas carros"<<endl;
+        return;
+    }
+    Carro ncarro;
+    ncarro.id = 1000 + numCarros;
+    cout<<"Ingrese marca del carro"<<endl;
+    cin>>ncarro.marca;
+     cout<<"Ingrese modelo del carro"<<endl;
+    cin>>ncarro.modelo;
+    cout<<"Ingrese año del carro"<<endl;
+    cin>>ncarro.ano;
+     cout<<"Ingrese a quien se le vendio el carro"<<endl;
+    cin>>ncarro.vendido_a;
+    cout<<"Ingrese a quien se le compro el carro"<<endl;
+    cin>>ncarro.comprado_a;
+     cout<<"Ingrese precio el precio de la venta"<<endl;
+    cin>>ncarro.precio_venta;
+    cout<<"ingrese precio de compra"<< endl;
+    cin>>ncarro.precio_compra;
+    
 }
