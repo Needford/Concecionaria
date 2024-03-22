@@ -144,3 +144,44 @@ void mostrarInfoCarro(const Carro& carro) {
          << ", Comprado por: " << nombreComprador << ", Precio de venta: " << carro.precio_venta
          << ", Precio de compra: " << carro.precio_compra << endl;
 }
+// Función para guardar los datos de clientes en un archivo CSV
+void guardarClientes() {
+    ofstream archivo("clientes.csv");
+    if (!archivo.is_open()) {
+        cout << "Error al abrir el archivo de clientes para guardar." << endl;
+        return;
+    }
+
+    archivo << "id;nombre;apellido;correo;edad" << endl;
+    for (const auto& cliente : clientes) {
+        archivo << cliente.id << ';' << cliente.nombre << ';' << cliente.apellido << ';' << cliente.correo << ';'
+                << cliente.edad << endl;
+    }
+
+    archivo.close();
+}
+
+// Función para agregar un nuevo cliente
+void agregarCliente() {
+    Cliente cliente;
+    cout << "Ingrese el ID del cliente: ";
+    cin >> cliente.id;
+    cout << "Ingrese el nombre del cliente: ";
+    cin >> cliente.nombre;
+    cout << "Ingrese el apellido del cliente: ";
+    cin >> cliente.apellido;
+    cout << "Ingrese el correo del cliente: ";
+    cin >> cliente.correo;
+    cout << "Ingrese la edad del cliente: ";
+    cin >> cliente.edad;
+    guardarClientes();
+}
+
+// Función para mostrar los clientes
+void mostrarClientes() {
+    cout << "Lista de clientes:" << endl;
+    for (const auto& cliente : clientes) {
+        cout << "ID: " << cliente.id << ", Nombre: " << cliente.nombre << ", Apellido: " << cliente.apellido
+             << ", Correo: " << cliente.correo << ", Edad: " << cliente.edad << endl;
+    }
+}
