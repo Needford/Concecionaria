@@ -185,3 +185,27 @@ void mostrarClientes() {
              << ", Correo: " << cliente.correo << ", Edad: " << cliente.edad << endl;
     }
 }
+// Función para eliminar un cliente
+void eliminarCliente(int idCliente) {
+    int indiceEliminar = -1;
+    for (int i = 0; i < numClientes; ++i) {
+        if (clientes[i].id == idCliente) {
+            indiceEliminar = i;
+            break;
+        }
+    }
+
+    if (indiceEliminar != -1) {
+        // Eliminar el cliente moviendo los elementos restantes hacia atrás
+        for (int i = indiceEliminar; i < numClientes - 1; ++i) {
+            clientes[i] = clientes[i + 1];
+        }
+        numClientes--;
+        cout << "Cliente eliminado exitosamente." << endl;
+
+        // Guardar los cambios en el archivo
+        guardarClientes();
+    } else {
+        cout << "No se encontró ningún cliente con el ID especificado." << endl;
+    }
+}
