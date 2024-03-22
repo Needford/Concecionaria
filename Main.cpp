@@ -118,3 +118,20 @@ void cargardatosclientes() {
 
     archivo.close();
 }
+
+// Función para vender un carro
+void venderCarro(int idCarro, const string& nombreCliente) {
+    for (int i = 0; i < numCarros; ++i) {
+        if (carros[i].id == idCarro) {
+            if (!carros[i].vendido) {
+                carros[i].vendido = true;
+                carros[i].cliente = nombreCliente;
+                cout << "Carro vendido a " << nombreCliente << " por $" << carros[i].precio_venta << endl;
+            } else {
+                cout << "El carro ya ha sido vendido." << endl;
+            }
+            return;
+        }
+    }
+    cout << "No se encontró el carro con la ID especificada." << endl;
+}
