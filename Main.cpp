@@ -36,7 +36,7 @@ int numCarros = 0;
 int numClientes = 0;
 
 // Función para cargar los datos de carros desde un archivo CSV
-void cargardatoscarros() {
+     {
     ifstream archivo("autos.csv");
     if (!archivo.is_open()) {
         cout << "Error al abrir el archivo de carros." << endl;
@@ -233,6 +233,58 @@ void agregarcarro(){
      cout<<"Ingrese precio el precio de la venta"<<endl;
     cin>>ncarro.precio_venta;
     cout<<"ingrese precio de compra"<< endl;
-    cin>>ncarro.precio_compra;
-    
+    cin>>ncarro.precio_compra;   
 }
+
+int main()
+  
+int opcion;  
+cout<<"        OPCIONES        "<<endl; 
+cout<<"1. )"<<endl; 
+cout<<"2)"<<endl; 
+cout<<"3)"<<endl; 
+cout<<"4)"<<endl; 
+cout<<"5)"<<endl;  
+cout<<"6)"<<endl; 
+cout<<"7)"<<endl;
+cout<<"8)"<<endl;
+ 
+switch(opcion){ 
+ case 1:{ 
+    cargardatoscarros("autos.csv");
+  break; 
+ } 
+ case 2:{ 
+    cargardatosclientes("clientes.csv");
+  break; 
+ }  
+ case 3:{ 
+    mostrarInfoCarro ();
+  break; 
+ } 
+ case 4:{ 
+    guardarClientes ("clientes.csv");
+  break; 
+ } 
+ case 5:{ 
+    agregarCliente ();
+  break; 
+ }
+  case 6;{
+     mostrarClientes (); 
+  break;
+  }
+  case 7;{
+     eliminarCliente();
+  break;
+  }
+  case 8; {
+    agregarcarro ();
+  break;
+  }
+ } 
+   
+ default:{ 
+  cout<<"Ingresaste una opcion erronea." 
+  break; 
+ } 
